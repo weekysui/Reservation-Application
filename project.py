@@ -77,9 +77,12 @@ class Login(object):
                     facial.facial('facial',_min)
                     response = False
                 elif self.userChoice=='7':
-                    print("You are signing out the program")
-                    self.logIn()
-                    response = False
+                    choice = input('Do you want to logout or quit? 1 is logout or 2 is quit?')
+                    if choice == '1':
+                        self.logIn()
+                        response = False
+                    elif choice == '2':
+                        response = False
                 else:
                     print( "Sorry, that is not a recognized command. Please type the number for one of the above options and press ENTER or RETURN.")
                     main.printOption()
