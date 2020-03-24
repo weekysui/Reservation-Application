@@ -2,14 +2,15 @@ import getpass
 from enum import Enum
 import pandas as pd
 from datetime import datetime
+from datetime import timedelta
 
 # get client info from csv database:
 clientdf = pd.read_csv('MOCK_DATA.csv')
 clientdf['start_date'] =pd.to_datetime(clientdf['start_date'])
 clientdf['end_date'] =pd.to_datetime(clientdf['end_date'])
 servicedf = pd.read_csv('service.csv')
-servicedf['start_time'] = pd.to_datetime(servicedf['start_time']).dt.time
-servicedf['end_time'] = pd.to_datetime(servicedf['end_time']).dt.time
+# servicedf['start_time'] = pd.to_datetime(servicedf['start_time']).dt.time
+# servicedf['end_time'] = pd.to_datetime(servicedf['end_time']).dt.time
 
 
 class MenuOption(Enum):
@@ -37,8 +38,8 @@ class Mainmenu(object):
             7: 'Sign Out or Quit'
         }
         self.facial = {
-            1: '30min',
-            2: '60min'
+            1: '30',
+            2: '60'
         }  
     def printOption(self,option=MenuOption.mainMenu.value):
         if option == MenuOption.mainMenu.value:
@@ -48,7 +49,7 @@ class Mainmenu(object):
                 print(i,self.main_menu[i])
             print()
         elif option == MenuOption.facial.value:
-            print("Facial Scheduling")
+            print("Facial Scheduling: ")
             print()
             for i in self.facial:
                 print(i,self.facial[i])
@@ -77,12 +78,9 @@ class Login(object):
                     facial.facial('facial',_min)
                     response = False
                 elif self.userChoice=='7':
-                    choice = input('Do you want to logout or quit? 1 is logout or 2 is quit?')
-                    if choice == '1':
-                        self.logIn()
-                        response = False
-                    elif choice == '2':
-                        response = False
+                    print("You are signing out the program")
+                    self.logIn()
+                    response = False
                 else:
                     print( "Sorry, that is not a recognized command. Please type the number for one of the above options and press ENTER or RETURN.")
                     main.printOption()
@@ -97,38 +95,54 @@ class Reservation(object):
     def __init__(self):
         pass
     def facial(self,service,option):
+        facial = Mainmenu()
         self.client = int(input("What is your client ID?"))
         if self.client in clientdf['id']:
             info = clientdf.loc[clientdf['id']==self.client]
-            self.date = input("What date?")
-            self.response = True
-            self.date = datetime.strptime(self.date,'%m/%d/%Y')
+            
 #             print(info['start_date'])
           
 #             print(self.date)
+            self.response = True
             while self.response:
-                if self.date>= info['start_date'][0] and self.date <= info['end_date'][0]:
-                    self.startTime = input("What is the start time?")
-                    self.startTime = datetime.strptime(self.startTime,'%I:%M %p')
-#                     if self.startTime in servicedf['start_time']:
-#                         print('sorry this time is not available, please choose another time')
-#                         self.response = True
-#                     else:
-#                         df = servicedf.append({
-#                             'id':self.client,
-#                             'start_time': self.startTime,
-#                             'duration': option,
-#                             'service': service
-#                         }, ignore_index=True)
-#                         print(df)
+                self.date = input("What date?")
+                self.date = datetime.strptime(self.date,'%m/%d/%Y').date()
+                if self.date>= info['start_date'][self.client-1] and self.date <= info['end_date'][self.client-1]:
                     self.response = False
+                    self.r = True
+                    while self.r:
+                        self.startTime = input("What is the start time?")
+    #                     self.startTime = datetime.strptime(self.startTime,'%I:%M %p').time()
+                        timeDf = servicedf.loc[servicedf['date']==self.date]
+                        if self.startTime in str(timeDf['start_time']):
+                            print('sorry this time is not available, please choose another time')
+                            self.r = True
+                        else:
+                            self.startTimeF = datetime.strptime(self.startTime,'%I:%M %p')           
+                            duration = facial.facial[int(option)]
+#                             print(duration)
+                            duF = timedelta(minutes=int(duration))
+                            self.endTime = ((duF+self.startTimeF).time()).strftime('%I:%M %p')
+#                             print(info['first_name'][1])
+#                             print(info['last_name'][1])
+                            self.servicedf = servicedf.append({
+                                'id':self.client,
+                                'first_name': info['first_name'][1],
+                                'last_name': info['last_name'][1],
+                                'date': self.date,
+                                'start_time': self.startTimeF.time().strftime('%I:%M %p'),
+                                'end_time': self.endTime,
+                                'duration': duration,
+                                'service': service
+                            }, ignore_index=True)
+                            print(self.servicedf.head())
+                        self.r = False
                 else:
                     print('wrong date')
                     self.response = True
                                                        
         else:
             print('not in the db')
-
 
 
 
