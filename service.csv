@@ -1,3 +1,7 @@
 id,service,date,start_time,end_time,duration,total_price,confirmation
-1,normal,3/17/2020,8:00 AM,8:30 AM,30,60,100normal
-1,collagen,3/17/2020,1:00 PM,2:00 PM,60,120,100collagen
+1,normal facial,3/17/2020,8:00 AM,8:30 AM,30,60,100normal
+1,collagen facial,3/17/2020,1:00 PM,2:00 PM,60,120,100collagen
+2,hot stone,3/20/2020,8:00 AM,9:00 AM,60,315,100hot
+2,deep tissue,3/21/2020,3:00 PM,3:30 PM,30,90,100deep
+10,herbal body wrap,3/22/2020,7:00 PM,8:00 PM,60,210,100herbal
+9,collagen facial,3/16/2020,6:00 PM,6:30 PM,30,60,101collagen
