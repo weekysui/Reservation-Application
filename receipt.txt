@@ -1,0 +1,16 @@
+Client's ID >>> 4
+
+Name >>> Dionne Morland
+
+Date >>> 2020-03-23
+
+Time >>> 11:00 AM - 12:00 PM
+
+Duration >>> 60 minutes
+
+Service >>> shiatsu massage
+
+Total price >>> $ 180.0
+
+Confirmation Number >>> 102shiatsu
+

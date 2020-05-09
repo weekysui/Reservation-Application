@@ -3,8 +3,9 @@ import getpass
 import sqlite3
 from datetime import datetime, timedelta
 from enum import Enum
-
+import sys
 import pandas as pd
+import json
 
 # connect the sqlitedb
 conn = sqlite3.connect('project1.db')
@@ -439,7 +440,7 @@ class Reservation(object):
                     duration = self.getDuration(serviceType, option)[1]
                     totalPrice = int(duration) * self.unitPrice
                     print(f'The total price is {totalPrice}')
-                except:
+                except ValueError:
                     print('Please use the correct time format hh:mm AM/PM')
                     self.checkTime(service)
                 # confInput = input('Would you like to confirm your appointment? (Y/N)')
@@ -473,6 +474,12 @@ class Reservation(object):
                     self.receipt = pd.DataFrame(data=newRecord, index=[' ']).T
                     print(self.receipt)
                     print()
+                    fo = open('receipt.txt', "w")
+                    for k, v in newRecord.items():
+                        fo.write(str(k) + ' >>> ' + str(v) + '\n\n')
+                    fo.close()
+                    # with open('receipt.txt', 'w') as data:
+                    #     data.write(str(self.receipt))
                     columns = ', '.join(newAddIn.keys())
                     placeholders = ':' + ', :'.join(newAddIn.keys())
                     sql = 'INSERT INTO services ({}) VALUES ({})'.format(columns, placeholders)
@@ -597,7 +604,7 @@ class maint(object):
 
     def maintlogIn(self):
         print('Welcome to the Maintenance Module\nPlease type your USERNAME and PASSWORD below then press ENTER or RETURN.')
-        #getpass library hides the password
+        # getpass library hides the password
         username = input("USERNAME: ")
         password = getpass.getpass('PASSWORD: ')
         c.execute('''SELECT * FROM users WHERE name = "%s"''' % (username))
