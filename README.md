@@ -1,4 +1,4 @@
-# Mud In Your Eye SPA Reservation CML Application: Team 3 (Braden Tabisula, Donald Berry, Wei Sui)
+# Mud In Your Eye SPA Reservation CML Application: 
 
 ## Objective: CML Application for Scheduling, availabile timeslot checking, appointment modification, system maintenance by manager
 1. Mud in your eye operation hours: 08:00 AM - 08:00 PM
@@ -15,7 +15,7 @@
  - Database: SQLite
  - Testing: Unit test with print out certain instances, system test with running the application directly (follow a user's case to run the application) 
 ### Main menu display:
-<img src='main_menu.jpg'>
+<img src='main_menu.JPG'>
  
 #### Application is able to check if the client is in our resort database, and if the service date is within the range of client's stay, example shows below:
 <img src='check_date.jpg'>
@@ -28,20 +28,3 @@
 
 #### The end of the day, staffs are able to quit the system. 
 <img src = 'quit.jpg'>
-
-### Maintenance Menu displays below, and you are able to modify service, price, and add a new service. 
-<img src = 'maintenance.JPG'>
-
-### Add a New Service:
-#### Entering option 2 from the Maintenance Menu will bring you to the Add a New Service function
-  - You will need to confirm that this is what you want to do
-  - You will be asked to enter the following data for the New Service: (Name, Rate, Duration, Type of Service)
-<img src = 'add_new.jpg'>
-
-### Search for a Service:
-#### Entering option 1 from the Maintenance Menu will bring you to the Search for a Service function
-  - You will need to confirm that this is what you want to do
-  - You will be asked to either search by Name or Type
-<img src = 'search.jpg'>
-
-### Maintenance system also includes updating a current service and search a service with its detailed information; when the user enters 6, Maintenance Menu will log you out and bring you back to the Scheduling Menu; when the user enter 7, it will quit the program
