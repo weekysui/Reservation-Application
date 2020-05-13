@@ -1,7 +1,9 @@
-id,service,date,start_time,end_time,duration,total_price,confirmation
-1,normal facial,3/17/2020,8:00 AM,8:30 AM,30,60,100normal
-1,collagen facial,3/17/2020,1:00 PM,2:00 PM,60,120,100collagen
-2,hot stone,3/20/2020,8:00 AM,9:00 AM,60,315,100hot
-2,deep tissue,3/21/2020,3:00 PM,3:30 PM,30,90,100deep
-10,herbal body wrap,3/22/2020,7:00 PM,8:00 PM,60,210,100herbal
-9,collagen facial,3/16/2020,6:00 PM,6:30 PM,30,60,101collagen
+schedule_time,id,service,date,start_time,end_time,duration,total_price,confirmation
+2020-03-15 18:30:18,1,normal facial,2020-03-17,08:00 AM,08:30 AM,30,60,100normal
+2020-03-15 18:30:20,1,collagen facial,2020-03-17,01:00 PM,02:00 PM,60,120,100collagen
+2020-03-16 16:40:20,9,collagen facial,2020-03-16,06:00 PM,06:30 PM,30,60,101collagen
+2020-03-18 13:46:14,2,hot stone,2020-03-20,08:00 AM,09:00 AM,60,315,100hot
+2020-03-21 13:36:12,2,deep tissue,2020-03-21,03:00 PM,03:30 PM,30,90,100deep
+2020-03-22 15:36:13,10,herbal body wrap,2020-03-22,07:00 PM,08:00 PM,60,210,100herbal
+2020-05-12 16:00:20,11,normal facial,2020-05-13,09:00 AM,09:30 AM,30,60,101normal
+2020-05-12 14:36:12,13,deep tissue,2020-05-14,01:00 PM,01:30 PM,30,90,101deep
