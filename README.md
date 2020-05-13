@@ -1,6 +1,6 @@
 # Mud In Your Eye SPA Reservation CML Application: 
 
-## Objective: CML Application for Scheduling, availabile timeslot checking, appointment modification, system maintenance by manager
+## Objective: Command Line Interface (CLI) Application for Scheduling, availabile timeslot checking, appointment modification, system maintenance by manager
 1. Mud in your eye operation hours: 08:00 AM - 08:00 PM
 2. Services offered: 
   - Facial: normal facial & collagen facial
